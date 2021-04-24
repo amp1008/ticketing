@@ -6,6 +6,9 @@ async function connectToDB () {
     if (!process.env.MONGO_URI) {
         throw new Error('MONGO URI is required !!');
     }
+    if (!process.env.JWT_KEY) {
+        throw new Error('JWT Key is required !!');
+    }
     try {
         await mongoose.connect(process.env.MONGO_URI, {
             useNewUrlParser: true,
