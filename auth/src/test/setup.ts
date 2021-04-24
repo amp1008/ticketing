@@ -3,6 +3,14 @@ import mongoose from 'mongoose';
 
 let mongo: any;
 
+declare global {
+    namespace NodeJS {
+        interface Global {
+            signin(): Promise<string[]>;
+        }
+    }
+}
+
 beforeAll(async () => {
     process.env.JWT_KEY = 'asdfgh';
     mongo = new MongoMemoryServer();
